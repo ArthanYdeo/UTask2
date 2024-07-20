@@ -21,6 +21,7 @@
     <EditText
         android:id="@+id/taskTitle"
         android:layout_width="match_parent"
+        android:backgroundTint="@color/white"
         android:layout_height="wrap_content"
         android:hint="Task Title"
         android:textColor="@color/design_default_color_background"
@@ -32,6 +33,7 @@
         android:id="@+id/taskDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
         android:hint="Task Details"
         android:textColor="@color/design_default_color_background"
         android:layout_below="@id/taskTitle"

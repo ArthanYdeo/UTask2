@@ -126,6 +126,11 @@ public class homeActivity extends AppCompatActivity {
                 taskEditor.remove(KEY_TASK_TIMELINE);
                 taskEditor.apply();
 
+                // Update button text and appearance
+                completeButton.setText("Task Completed");
+                completeButton.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
+                completeButton.setEnabled(false);
+
                 // Notify the user
                 Toast.makeText(homeActivity.this, "Task completed and moved to completed tasks!", Toast.LENGTH_SHORT).show();
 
