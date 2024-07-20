@@ -10,10 +10,51 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create"
+        android:text="Create Task"
         android:textSize="50sp"
+        android:id="@+id/title"
         android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/taskTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Task Title"
+        android:layout_below="@id/title"
+        android:layout_marginTop="16dp"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/taskDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Task Details"
+        android:layout_below="@id/taskTitle"
+        android:layout_marginTop="16dp"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/taskTimeline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Task Timeline"
+        android:layout_below="@id/taskDetails"
+        android:layout_marginTop="16dp"
+        android:padding="16dp" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Task"
+        android:layout_below="@id/taskTimeline"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="#668E67"
+        android:textColor="@android:color/white"
+        android:padding="16dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -23,6 +64,6 @@
         android:layout_alignParentBottom="true"
         app:itemTextColor="#FFFFFF"
         app:itemIconTint="#000000"
-        app:menu="@menu/bottom_nav_menu"/>
+        app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

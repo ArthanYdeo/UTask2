@@ -14,10 +14,12 @@
         android:layout_above="@id/bottom_navigation">
 
         <LinearLayout
+            android:id="@+id/taskContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
+            <!-- Task items will be added here programmatically -->
         </LinearLayout>
 
     </FrameLayout>
