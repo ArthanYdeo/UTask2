@@ -7,14 +7,47 @@
     android:background="@drawable/bg1"
     tools:context=".completeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Title Container -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Complete"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:id="@+id/title_container"
+        android:orientation="vertical"
+        android:background="#668E67"
+        android:padding="16dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed Tasks"
+            android:textSize="45sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <!-- ScrollView for Completed Tasks -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_container"
+        android:layout_above="@id/bottom_navigation"
+        android:padding="16dp"
+        tools:ignore="NotSibling">
+
+        <LinearLayout
+            android:id="@+id/completedTasksContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Tasks will be added here -->
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"

@@ -109,9 +109,10 @@ public class homeActivity extends AppCompatActivity {
                 // Save the completed task
                 SharedPreferences completedTaskPreferences = getSharedPreferences("CompletedTaskPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor completedTaskEditor = completedTaskPreferences.edit();
-                completedTaskEditor.putString("completedTaskTitle", title);
-                completedTaskEditor.putString("completedTaskDetails", details);
-                completedTaskEditor.putString("completedTaskTimeline", timeline);
+
+                // Create a unique key for each task
+                String uniqueKey = "task_" + System.currentTimeMillis();
+                completedTaskEditor.putString(uniqueKey, title + "|" + details + "|" + timeline);
                 completedTaskEditor.apply();
 
                 // Remove the task from current tasks
