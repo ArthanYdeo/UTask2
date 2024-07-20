@@ -13,6 +13,7 @@
         android:text="Create Task"
         android:textSize="50sp"
         android:id="@+id/title"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp" />
@@ -22,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Task Title"
+        android:textColor="@color/design_default_color_background"
         android:layout_below="@id/title"
         android:layout_marginTop="16dp"
         android:padding="16dp" />
@@ -31,28 +33,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Task Details"
+        android:textColor="@color/design_default_color_background"
         android:layout_below="@id/taskTitle"
         android:layout_marginTop="16dp"
         android:padding="16dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/taskTimeline"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:hint="Task Timeline"
+        android:textColor="@color/black"
         android:layout_below="@id/taskDetails"
         android:layout_marginTop="16dp"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:text="Select Deadline"
+        android:clickable="true"
+        android:focusable="false"
+        android:background="@drawable/deadline_background" />
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="Save Task"
         android:layout_below="@id/taskTimeline"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:background="#668E67"
+        android:background="@drawable/button_background"
         android:textColor="@android:color/white"
         android:padding="16dp" />
 

@@ -52,12 +52,17 @@ public class homeActivity extends AppCompatActivity {
 
         // Retrieve task data from SharedPreferences
         SharedPreferences taskPreferences = getSharedPreferences(TASK_PREFS_NAME, MODE_PRIVATE);
-        String title = taskPreferences.getString(KEY_TASK_TITLE, "No title");
-        String details = taskPreferences.getString(KEY_TASK_DETAILS, "No details");
-        String timeline = taskPreferences.getString(KEY_TASK_TIMELINE, "No timeline");
+        String title = taskPreferences.getString(KEY_TASK_TITLE, null);
+        String details = taskPreferences.getString(KEY_TASK_DETAILS, null);
+        String timeline = taskPreferences.getString(KEY_TASK_TIMELINE, null);
 
-        // Add task to the container
-        addTaskToContainer(title, details, timeline);
+        // Check if task data is valid and not null
+        if (title != null && !title.equals("No title") &&
+                details != null && !details.equals("No details") &&
+                timeline != null && !timeline.equals("No timeline")) {
+            // Add task to the container
+            addTaskToContainer(title, details, timeline);
+        }
 
         //bottom nav//
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -109,10 +114,9 @@ public class homeActivity extends AppCompatActivity {
                 // Save the completed task
                 SharedPreferences completedTaskPreferences = getSharedPreferences("CompletedTaskPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor completedTaskEditor = completedTaskPreferences.edit();
-
-                // Create a unique key for each task
-                String uniqueKey = "task_" + System.currentTimeMillis();
-                completedTaskEditor.putString(uniqueKey, title + "|" + details + "|" + timeline);
+                completedTaskEditor.putString("completedTaskTitle", title);
+                completedTaskEditor.putString("completedTaskDetails", details);
+                completedTaskEditor.putString("completedTaskTimeline", timeline);
                 completedTaskEditor.apply();
 
                 // Remove the task from current tasks
