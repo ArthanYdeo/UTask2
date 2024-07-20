@@ -1,12 +1,11 @@
 package com.example.utask;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,21 +13,29 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class homeActivity extends AppCompatActivity {
 
+    private static final String PREFS_NAME = "UserPrefs";
+    private static final String KEY_TOAST_SHOWN = "ToastShown";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         // Retrieve data from SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String name = sharedPreferences.getString("name", "No name");
-        String email = sharedPreferences.getString("email", "No email");
-        String school = sharedPreferences.getString("school", "No school");
-        String num = sharedPreferences.getString("num", "No number");
-        String studNum = sharedPreferences.getString("studNum", "No student number");
 
-        // Display data using Toast
-        Toast.makeText(this, "Welcome, " + name + "!", Toast.LENGTH_SHORT).show();
+        // Check if the Toast message has been shown before
+        boolean toastShown = sharedPreferences.getBoolean(KEY_TOAST_SHOWN, false);
+        if (!toastShown) {
+            // Display data using Toast
+            Toast.makeText(this, "Welcome, " + name + "!", Toast.LENGTH_SHORT).show();
+
+            // Update SharedPreferences to mark the Toast message as shown
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(KEY_TOAST_SHOWN, true);
+            editor.apply();
+        }
 
         //bottom nav//
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -36,7 +43,6 @@ public class homeActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 switch (item.getItemId()) {
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(), profileActivity.class));
@@ -56,18 +62,5 @@ public class homeActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        // Update TextViews with user data
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView nameTextView = findViewById(R.id.nameTextView);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView emailTextView = findViewById(R.id.emailTextView);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView schoolTextView = findViewById(R.id.schoolTextView);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView numTextView = findViewById(R.id.numTextView);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView studNumTextView = findViewById(R.id.studNumTextView);
-
-        nameTextView.setText(name);
-        emailTextView.setText(email);
-        schoolTextView.setText(school);
-        numTextView.setText(num);
-        studNumTextView.setText(studNum);
     }
 }
