@@ -23,10 +23,31 @@ public class profileActivity extends AppCompatActivity {
         // Retrieve data from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         String name = sharedPreferences.getString("name", "No name");
+        String email = sharedPreferences.getString("email", "No email");
+        String school =sharedPreferences.getString("school", "No school");
+        String number = sharedPreferences.getString("num", "No number");
+        String studNum = sharedPreferences.getString("studNum", "No student number");
 
         // Update TextView with user name
         TextView profileNameTextView = findViewById(R.id.profileNameTextView);
         profileNameTextView.setText(name);
+
+        //Email//
+        TextView profileEmailTextView = findViewById(R.id.profileEmailTextView);
+        profileEmailTextView.setText(email);
+
+        //School//
+        TextView profileSchoolTextView = findViewById(R.id.profileSchoolTextView);
+        profileSchoolTextView.setText(school);
+
+        //Number//
+        TextView profileNumberTextView = findViewById(R.id.profileNumberTextView);
+        profileNumberTextView.setText(number);
+
+        //StudNumber//
+        TextView profileStudNumberTextView = findViewById(R.id.profileStudNumberTextView);
+        profileStudNumberTextView.setText(studNum);
+
 
         // Logout button functionality
         Button logoutButton = findViewById(R.id.logoutButton);

@@ -36,6 +36,14 @@ public class getInfo extends AppCompatActivity {
                 submit();
             }
         });
+
+        // Set click listener for the date picker button
+        dateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDatePicker(v);
+            }
+        });
     }
 
     private String getTodaysDate() {
@@ -90,7 +98,7 @@ public class getInfo extends AppCompatActivity {
             case 8:
                 return "AUG";
             case 9:
-                return "SEPT";
+                return "SEP";
             case 10:
                 return "OCT";
             case 11:
